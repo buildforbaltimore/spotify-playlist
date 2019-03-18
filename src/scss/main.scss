@@ -1,0 +1,109 @@
+@import './variables';
+@import '~sanitize.css';
+
+
+body {
+  background-color: $bg-color;
+}
+.items {
+  display: grid;
+  // grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 2px;
+  justify-content: center;
+  align-items: center;
+}
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transition: 100ms;
+
+  img {
+    width: 100%;
+  }
+}
+.effect_1 {
+  background-color: #4e4e97;
+  content: " ";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  opacity: .75;
+}
+.effect_2 {
+  background-color: #4e976f;
+  content: " ";
+  position: absolute;
+  border-radius: 564363px;
+  opacity: .75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item:hover .effect_1 {
+  transform: rotate(45deg);
+  animation: effect_1 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+}
+.item:hover .effect_2 {
+  transform: rotate(45deg);
+  animation: effect_2 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-duration: 750ms;
+  animation-delay: 350ms;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+}
+@keyframes effect_1 {
+  0% {
+    width: 0%;
+    height: 0%;
+  }
+  100% {
+    width: 200%;
+    height: 200%;
+  }
+}
+@keyframes effect_2 {
+  0% {
+    width: 0%;
+    height: 0%;
+  }
+  100% {
+    width: 80%;
+    height: 80%;
+  }
+}
+.info {
+  position: absolute;
+  color: #fff;
+  font-weight: bold;
+  visibility: hidden;
+  transition: 1000ms;
+  opacity: 0;
+
+  p {
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+  }
+}
+.item:hover .info {
+  visibility: visible;
+  opacity: 1;
+}
